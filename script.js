@@ -13,6 +13,10 @@ let highScore = 0;
 let numberToGuess = randomNumber();
 console.warn(numberToGuess);
 
+const showMessage = function(string) {
+  message.textContent = string;
+}
+
 //Selecting the DOM elements
 let checkButton = document.querySelector('.check');
 let againButton = document.querySelector('.again');
@@ -33,18 +37,18 @@ checkButton.addEventListener('click', function () {
 let compareNumber = function (number) {
   if (number != null && number != undefined && number != 0) {
     if (number === numberToGuess) {
-      message.textContent = `Adivinaste!`;
+      showMessage('Adivinaste!');
       calculateHighScore(score);
       body.style.backgroundColor = 'green';
     } else if (number > numberToGuess) {
-      message.textContent = `Demasiado alto!`;
+      showMessage('Demasiado alto!');
       score--;
     } else if (number < numberToGuess) {
-      message.textContent = `Demasiado bajo!`;
+      showMessage('Demasiado bajo!');
       score--;
     }
   } else {
-    message.textContent = `Ingresa un numero para probar!`;
+    showMessage('Ingresa un numero!!');
   }
   labelScore.textContent = `💯 Punteo: ${score}`;
 };
